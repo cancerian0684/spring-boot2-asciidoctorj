@@ -30,7 +30,7 @@ springBoot {
 bootJar {
     launchScript()
     mainClassName = "com.example.demo.DemoApplication"
-    requiresUnpack 'org.jruby:jruby-complete', 'org.asciidoctor:asciidoctorj'
+	requiresUnpack '**/jruby-complete*.jar', '**/asciidoctorj-*.jar'
 }
 
 dependencies {
