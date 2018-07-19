@@ -31,6 +31,10 @@ bootJar {
     launchScript()
     mainClassName = "com.example.demo.DemoApplication"
 	requiresUnpack '**/jruby-complete*.jar', '**/asciidoctorj-*.jar'
+//    requiresUnpack {
+//        println it.file
+//        return false
+//    }
 }
 
 dependencies {
