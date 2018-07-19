@@ -44,3 +44,19 @@ Caused by: org.jruby.exceptions.RaiseException: (LoadError) no such file to load
 ## How to reproduce the issue
 1. Create build using `./gradlew build` command
 2. Start the executable from build/lib directory
+
+
+## Update: Fix for the issue
+Issue got fixed by adding the below lines in bootJar block
+
+```groovy
+bootJar {
+    launchScript()
+    mainClassName = "com.example.demo.DemoApplication"
+	requiresUnpack '**/jruby-complete*.jar', '**/asciidoctorj-*.jar'
+}
+```
+
+> To deal with any problematic libraries, an executable archive can be configured to unpack specific nested jars to a temporary folder when the executable archive is run. Libraries can be identified as requiring unpacking using Ant-style patterns that match against the absolute path of the source jar file.
+
+**See this SO thread for more information:** https://stackoverflow.com/questions/51412834/asciidoctorj-library-does-not-work-with-spring-boot-2-executable-boot-jar
